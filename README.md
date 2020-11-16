@@ -28,7 +28,7 @@ Url den okurken Base64 encoderdan geçirip sonrasıda decode ederek kullandım. 
 
 Sonrasında createSearchCriteria request edilen URL pattern ve match işlemlerinden geçirerek gruplara ayırmış oldum. Her bir grup farklı bir arama işlemine denk geleceği için her biri için SearchCriteria oluşturdum. Servise elde ettiğim SearchCriteria listesini parametre olarak geçip, yapmak istediğim operator (EQUAL, MATCH, ALL) bilgisini de gönderdim.
 
-### Test işlemleri
+### Test İşlemleri
 
 searchCriteria ve searchKey işlemleri için kullandığımız OtomobilService servisinin gönderdiğim searchcriterialara göre doğru sonuçlar dönüp dönmediğini test ettim. Bunun için aşağıdaki test caselerini oluşturdum ve başarılı bir şekilde testi geçtiğini gözlemledim.
 
@@ -40,9 +40,10 @@ givenSearchCriteriaHepsi_whenGettingListOfOtomobil_thenCorrect
 
 givensearchKeyHepsi_whenGettingListOfOtomobil_thenCorrect
 
-<h2>REQUEST AND RESPONSE</h2>
+<h2>Request And Response</h2>
 
 INPUT : http://localhost:8080/otomobil/searchCriteria?search=sinif:Otomobil
+
 [{"id":1,"marka":"Audi","model":"A3","sinif":"Otomobil"},{"id":2,"marka":"Audi","model":"A4","sinif":"Otomobil"},{"id":3,"marka":"Audi","model":"A5","sinif":"Otomobil"},{"id":4,"marka":"Audi","model":"A6","sinif":"Otomobil"},{"id":5,"marka":"Audi","model":"A7","sinif":"Otomobil"}]
 
 INPUT : http://localhost:8080/otomobil/searchCriteria?search=marka:Audi;model:A7;sinif:Otomobil
@@ -50,9 +51,11 @@ INPUT : http://localhost:8080/otomobil/searchCriteria?search=marka:Audi;model:A7
 [{"id":5,"marka":"Audi","model":"A7","sinif":"Otomobil"}]
 
 INPUT : http://localhost:8080/otomobil/searchCriteria?search=hepsi:BMC
+
 [{"id":6,"marka":"BMC","model":"Belde","sinif":"Otobüs"},{"id":7,"marka":"BMC","model":"ProBus","sinif":"Otobüs"},{"id":8,"marka":"BMC","model":"ProCity","sinif":"Otobüs"},{"id":9,"marka":"BMC","model":"Fatih","sinif":"Kamyon&Kamyonet"},{"id":10,"marka":"BMC","model":"Levend","sinif":"Kamyon&Kamyonet"}]
 
 INPUT : http://localhost:8080/otomobil/searchKey?key=marka:u
+
 [{"id":1,"marka":"Audi","model":"A3","sinif":"Otomobil"},{"id":2,"marka":"Audi","model":"A4","sinif":"Otomobil"},{"id":3,"marka":"Audi","model":"A5","sinif":"Otomobil"},{"id":4,"marka":"Audi","model":"A6","sinif":"Otomobil"},{"id":5,"marka":"Audi","model":"A7","sinif":"Otomobil"},{"id":11,"marka":"Audi","model":"Q5","sinif":"Arazi,SUV&Pick-up"},{"id":12,"marka":"Audi","model":"Q7","sinif":"Arazi,SUV&Pick-up"}]
 
 INPUT : http://localhost:8080/otomobil/searchKey?key=marka:a;model:a
@@ -60,6 +63,7 @@ INPUT : http://localhost:8080/otomobil/searchKey?key=marka:a;model:a
 [{"id":1,"marka":"Audi","model":"A3","sinif":"Otomobil"},{"id":2,"marka":"Audi","model":"A4","sinif":"Otomobil"},{"id":3,"marka":"Audi","model":"A5","sinif":"Otomobil"},{"id":4,"marka":"Audi","model":"A6","sinif":"Otomobil"},{"id":5,"marka":"Audi","model":"A7","sinif":"Otomobil"}]
 
 INPUT : http://localhost:8080/otomobil/searchKey?key=hepsi:t
+
 [{"id":1,"marka":"Audi","model":"A3","sinif":"Otomobil"},{"id":2,"marka":"Audi","model":"A4","sinif":"Otomobil"},{"id":3,"marka":"Audi","model":"A5","sinif":"Otomobil"},{"id":4,"marka":"Audi","model":"A6","sinif":"Otomobil"},{"id":5,"marka":"Audi","model":"A7","sinif":"Otomobil"},{"id":6,"marka":"BMC","model":"Belde","sinif":"Otobüs"},{"id":7,"marka":"BMC","model":"ProBus","sinif":"Otobüs"},{"id":8,"marka":"BMC","model":"ProCity","sinif":"Otobüs"},{"id":9,"marka":"BMC","model":"Fatih","sinif":"Kamyon&Kamyonet"},{"id":10,"marka":"BMC","model":"Levend","sinif":"Kamyon&Kamyonet"}]
 
 
